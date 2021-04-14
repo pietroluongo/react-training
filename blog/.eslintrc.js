@@ -33,6 +33,6 @@ module.exports = {
     'jsx-a11y/interactive-supports-focus': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'import/prefer-default-export': 'off',
-
+    'no-underscore-dangle': 'off',
   },
 };
