@@ -12,6 +12,10 @@ class StreamShow extends Component {
   componentDidMount() {
     const { fetchStreamFunc, match } = this.props;
     fetchStreamFunc(match.params.id);
+    flv.createPlayer({
+      type: 'flv',
+      url: `http://localhost:8002/live/${match.params.id}.flv`,
+    });
   }
 
   render() {
