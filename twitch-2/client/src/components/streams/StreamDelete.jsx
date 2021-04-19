@@ -3,14 +3,14 @@ import Modal from '../Modal';
 
 const StreamDelete = () => {
   const actions = (
-    <div>
+    <>
       <div className="ui button negative">
         Delete
       </div>
       <div className="ui button">
         Cancel
       </div>
-    </div>
+    </>
   );
 
   return (
