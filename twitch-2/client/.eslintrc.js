@@ -37,5 +37,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'react/jsx-props-no-spreading': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'jsx-a11y/media-has-caption': 'off',
   },
 };
