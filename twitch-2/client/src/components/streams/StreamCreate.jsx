@@ -1,67 +1,22 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createStream } from '../../actions';
+import StreamForm from './StreamForm';
 
 class StreamCreate extends Component {
   onSubmit = (formValues) => {
     const { createStreamFunc } = this.props;
     createStreamFunc(formValues);
-    console.log(formValues);
-  }
-
-  renderError({ error, touched }) {
-    if (error && touched) {
-      return (
-        <div className="ui error message">
-          <div className="header">{error}</div>
-        </div>
-      );
-    }
-    return null;
-  }
-
-  renderInput = ({ input, label, meta }) => {
-    const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
-    return (
-      <div className={className}>
-        <label htmlFor={input.name}>{label}</label>
-        <input {...input} autoComplete="off" />
-        {this.renderError(meta)}
-      </div>
-    );
   }
 
   render() {
-    const { handleSubmit } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit)} className="ui form error">
-          <Field name="title" component={this.renderInput} label="Enter Title" />
-          <Field name="description" component={this.renderInput} label="Enter Description" />
-          <button type="submit" className="ui button primary">
-            Submit
-          </button>
-        </form>
+        <h3>Create a Stream</h3>
+        <StreamForm onSubmit={this.onSubmit} />
       </div>
     );
   }
 }
 
-const validate = (formValues) => {
-  const errors = {};
-  if (!formValues.title) {
-    errors.title = 'A title is needed.';
-  }
-  if (!formValues.description) {
-    errors.description = 'A description is needed.';
-  }
-  return errors;
-};
-
-const wrappedForm = reduxForm({
-  form: 'streamCreate',
-  validate,
-})(StreamCreate);
-
-export default connect(null, { createStreamFunc: createStream })(wrappedForm);
+export default connect(null, { createStreamFunc: createStream })(StreamCreate);
