@@ -5,7 +5,8 @@ class Field extends Component {
     static contextType = LanguageContext;
 
     getLabelText() {
-      switch (this.context) {
+      const { language } = this.context;
+      switch (language) {
         case 'br':
           return 'Nome';
         case 'nl':

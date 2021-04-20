@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import LanguageContext from '../contexts/LanguageContext';
 
 class Button extends Component {
-  getButtonText() {
-    switch (this.context) {
+  getButtonText(language) {
+    switch (language) {
       case 'nl':
         return 'Voorleggen';
       case 'br':
@@ -13,23 +13,18 @@ class Button extends Component {
     }
   }
 
-  render() {
+  renderButton() {
     return (
       <button type="submit" className="ui button primary">
         <LanguageContext.Consumer>
-          {(lang) => {
-            switch (lang) {
-              case 'nl':
-                return 'Voorleggen';
-              case 'br':
-                return 'Enviar';
-              default:
-                return 'Submit';
-            }
-          }}
+          {({ language }) => this.getButtonText(language)}
         </LanguageContext.Consumer>
       </button>
     );
+  }
+
+  render() {
+    return this.renderButton();
   }
 }
 
