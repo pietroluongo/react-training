@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserCreate from './UserCreate';
+import LanguageContext from '../contexts/LanguageContext';
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
   }
 
   render() {
+    const { language } = this.state;
     return (
       <div className="ui container">
         <div>
@@ -20,7 +22,9 @@ class App extends Component {
           <i className="flag br" role="button" aria-label="BR" onClick={() => this.onLanguageChange('br')} />
           <i className="flag nl" role="button" aria-label="NL" onClick={() => this.onLanguageChange('nl')} />
         </div>
-        <UserCreate />
+        <LanguageContext.Provider value={language}>
+          <UserCreate />
+        </LanguageContext.Provider>
       </div>
     );
   }
