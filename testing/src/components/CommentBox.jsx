@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const CommentBox = () => {
-    return <div>CommentBox</div>
+class CommentBox extends Component {
+  render() {
+    return (
+      <form />
+    );
+  }
 }
-
 export default CommentBox;
