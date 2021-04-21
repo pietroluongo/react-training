@@ -3,7 +3,15 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: [
+          'src',
+        ],
+      },
+    },
+  },
   extends: [
     'plugin:react/recommended',
     'airbnb',
@@ -45,15 +53,6 @@ module.exports = {
       files: [
         '**/*.test.js',
       ],
-      settings: {
-        'import/resolver': {
-          node: {
-            paths: [
-              'src',
-            ],
-          },
-        },
-      },
       env: {
         jest: true, // now **/*.test.js files' env has both es6 *and* jest
       },
