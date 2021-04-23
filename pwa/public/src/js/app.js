@@ -10,3 +10,11 @@ const loadServiceWorkers = async () => {
 if ('serviceWorker' in navigator) {
   loadServiceWorkers();
 }
+
+let deferredInstallPromptEvent;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  console.log('Fired beforeInstallPrompt event');
+  event.preventDefault();
+  deferredInstallPromptEvent = event;
+});
